@@ -1,0 +1,11 @@
+{
+  "type": "DB",
+  "daos": [
+    "be.helha.DAOImpl.ItemDAOImpl",
+    "be.helha.DAOImpl.JoueurDAOImpl"
+  ],
+  "url": "jdbc:postgresql://localhost:5432/ProjetMMO",
+  "user": "postgres",
+  "password": "1234"
+
+}
