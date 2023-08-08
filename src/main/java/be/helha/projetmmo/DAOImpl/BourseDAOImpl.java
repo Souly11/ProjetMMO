@@ -22,7 +22,7 @@ public class BourseDAOImpl implements BourseDAO {
         int idBourse = -1; // Valeur par défaut en cas d'échec d'ajout de la bourse
         try {
             con = DaoFactory.getInstance().getConnexion();
-            String query = "INSERT INTO bourse (joueur_id, contenu, limite) VALUES (?, ?, ?)";
+            String query = "INSERT INTO bourse (joueur_id, contenu) VALUES (?, ?)";
             ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, bourse.getJoueur().getId());
 
@@ -30,8 +30,6 @@ public class BourseDAOImpl implements BourseDAO {
             ObjectMapper objectMapper = new ObjectMapper();
             String contenuJson = objectMapper.writeValueAsString(bourse.getDragmes());
             ps.setObject(2, contenuJson, Types.OTHER);
-
-            ps.setInt(3, bourse.getLimit());
 
             ps.executeUpdate();
 

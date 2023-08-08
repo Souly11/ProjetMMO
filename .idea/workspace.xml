@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5561a949-c50c-41a5-9a07-577dd9765975" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/MockJoueurDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/GestionJoueurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/GestionJoueurController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/BourseDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/BourseDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/MockJoueurDAO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_JoueurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_JoueurDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,29 +82,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test_BourseDAO.testAjouterDragmeBourse" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;be.helha.tests.Test_BourseDAO.testAjouterDragmeBourse&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="Test_BourseDAO.testSupprimerDragmeBourse" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -141,6 +119,29 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;be.helha.tests.Test_JoueurDAO&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_JoueurDAO.testGetAllPersonnages" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;be.helha.tests.Test_JoueurDAO.testGetAllPersonnages&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -198,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Test_JoueurDAO.testGetAllPersonnages" />
         <item itemvalue="Gradle.Test_JoueurDAO.testSupprimerJoueur" />
         <item itemvalue="Gradle.Test_JoueurDAO" />
         <item itemvalue="Gradle.Test_JoueurDAO.testUpdateStatut" />
         <item itemvalue="Gradle.Test_BourseDAO.testSupprimerDragmeBourse" />
-        <item itemvalue="Gradle.Test_BourseDAO.testAjouterDragmeBourse" />
       </list>
     </recent_temporary>
   </component>
@@ -221,7 +222,8 @@
       <workItem from="1691328523890" duration="3156000" />
       <workItem from="1691413015287" duration="38559000" />
       <workItem from="1691491737822" duration="13996000" />
-      <workItem from="1691522721736" duration="1481000" />
+      <workItem from="1691522721736" duration="1525000" />
+      <workItem from="1691524899589" duration="1691000" />
     </task>
     <servers />
   </component>
