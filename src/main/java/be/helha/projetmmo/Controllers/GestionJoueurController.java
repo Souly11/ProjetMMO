@@ -227,6 +227,28 @@ public class GestionJoueurController implements Initializable {
             System.err.println("Erreur : la mise à jour du statut en base de données a échoué.");
         }
 
+        if(joueur.isStatus() == false) {
+            for (Dragmes dragme : tvObservableList) {
+                if(dragme.getValeur() == 20) {
+                    montantTotalBourse -= dragme.getValeur();
+                    Platform.runLater(() -> montant.setText(String.valueOf(montantTotalBourse) + " Dragmes"));
+                } else if (dragme.getValeur() == 50){
+                    montantTotalBourse -= dragme.getValeur();
+                    Platform.runLater(() -> montant.setText(String.valueOf(montantTotalBourse) + " Dragmes"));
+                }
+            }
+        }
+        if(joueur.isStatus() == true) {
+            for (Dragmes dragme : tvObservableList) {
+                if(dragme.getValeur() == 20) {
+                    montantTotalBourse += dragme.getValeur();
+                    Platform.runLater(() -> montant.setText(String.valueOf(montantTotalBourse) + " Dragmes"));
+                } else if (dragme.getValeur() == 50){
+                    montantTotalBourse += dragme.getValeur();
+                    Platform.runLater(() -> montant.setText(String.valueOf(montantTotalBourse) + " Dragmes"));
+                }
+            }
+        }
         // Rafraîchir la vue de la bourse après la mise à jour du statut
         rafraichirBourse(joueur.getId());
 

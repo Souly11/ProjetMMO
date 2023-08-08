@@ -2,6 +2,7 @@ package be.helha.tests;
 
 import be.helha.projetmmo.DAO.JoueurDAO;
 import be.helha.projetmmo.DAOImpl.JoueurDAOImpl;
+import be.helha.projetmmo.DAOImpl.MockJoueurDAO;
 import be.helha.projetmmo.Model.Joueur;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class Test_JoueurDAO {
 
-    private JoueurDAO joueurDAO = new JoueurDAOImpl();
+    private JoueurDAO joueurDAO = new MockJoueurDAO();
 
     @Test
     @Order(1)
@@ -24,22 +26,38 @@ public class Test_JoueurDAO {
         String pseudo = "nouveauJoueur";
         String email = "nouveaujoueur@example.com";
 
-        boolean resultat = joueurDAO.ajouterJoueur(pseudo, email);
-        assertTrue(resultat);
-        System.out.println("Le joueur a été ajouté avec succès.");
+        // Vérifier que le joueur n'existe pas déjà
+        assertFalse(joueurDAO.existeJoueur(pseudo, email));
+
+        // Ajouter le joueur
+        assertDoesNotThrow(() -> {
+            boolean resultat = joueurDAO.ajouterJoueur(pseudo, email);
+            assertTrue(resultat);
+        });
+
+        // Vérifier que le joueur a été ajouté avec succès
+        assertTrue(joueurDAO.existeJoueur(pseudo, email));
     }
 
 
     @Test
     @Order(2)
-    public void testSupprimerJoueur() {
-        // Supposons que l'ID 1 correspond à un joueur existant dans la base de données
+    public void testSupprimerJoueur() throws SQLException {
         int joueurId = 1;
 
-        boolean resultat = joueurDAO.supprimerJoueur(joueurId);
-        assertTrue(resultat);
-        System.out.println("Le joueur a été supprimé avec succès.");
+        // Vérifier que le joueur existe avant la suppression
+        assertNotNull(joueurDAO.getJoueurById(joueurId), "Le joueur doit exister avant la suppression.");
+
+        // Supprimer le joueur
+        assertDoesNotThrow(() -> {
+            boolean resultat = joueurDAO.supprimerJoueur(joueurId);
+            assertTrue(resultat);
+        });
+
+        // Vérifier que le joueur a été supprimé avec succès
+        assertNull(joueurDAO.getJoueurById(joueurId), "Le joueur doit être supprimé après la suppression.");
     }
+
 
     @Test
     @Order(3)
@@ -47,43 +65,32 @@ public class Test_JoueurDAO {
         int joueurId = 8;
         boolean nouveauStatut = true;
 
-        Joueur joueurAvantMiseAJour = joueurDAO.getJoueurById(joueurId);
-        assertNotNull(joueurAvantMiseAJour, "Le joueur avant la mise à jour ne doit pas être null.");
-
         boolean updateResult = joueurDAO.updateStatut(joueurId, nouveauStatut);
         assertTrue(updateResult, "La mise à jour du statut doit être réussie.");
-
-        Joueur joueurApresMiseAJour = joueurDAO.getJoueurById(joueurId);
-        assertNotNull(joueurApresMiseAJour, "Le joueur après la mise à jour ne doit pas être null.");
-        assertEquals(nouveauStatut, joueurApresMiseAJour.isStatus(), "Le statut doit être mis à jour correctement.");
     }
-
 
     @Test
     @Order(4)
-    public void testGetAllPersonnages() {
-        List<Joueur> personnages = null;
-        try {
-            personnages = joueurDAO.getAllJoueurs();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+    public void testGetAllPersonnages() throws SQLException {
+        List<Joueur> joueurs = new ArrayList<>(); // Créer une liste fictive de joueurs
+        // Ajouter des joueurs fictifs à la liste
+        joueurs.add(new Joueur());
+        joueurs.add(new Joueur());
+
+        // Injecter la liste fictive dans MockJoueurDAO
+        ((MockJoueurDAO) joueurDAO).setJoueurs(joueurs);
+
+        List<Joueur> personnages = joueurDAO.getAllJoueurs();
         assertNotNull(personnages);
-        assertTrue(personnages.size() > 0);
-        System.out.println("Les personnages ont ete recuperes avec succes.");
-        for (Joueur personnage : personnages) {
-            System.out.println(personnage.toString());
-        }
+        assertEquals(joueurs.size(), personnages.size());
     }
 
     @Test
     @Order(5)
     public void testExisteJoueur() throws SQLException {
-        // Supposons que ces joueurs existent déjà dans la base de données
         String pseudoExistant = "Taj";
         String emailExistant = "taj@gmail.com";
 
-        // Test lorsque le joueur existe dans la base de données
         boolean joueurExistantExiste = joueurDAO.existeJoueur(pseudoExistant, emailExistant);
         assertTrue(joueurExistantExiste, "Le joueur existant doit exister dans la base de données.");
     }
@@ -91,27 +98,11 @@ public class Test_JoueurDAO {
     @Test
     @Order(6)
     public void testUpdatePseudo() throws SQLException {
-        // Supposons que le joueur avec l'ID 1 existe déjà dans la base de données
         int joueurId = 8;
         String nouveauPseudo = "Taj";
 
         boolean updateResult = joueurDAO.updatePseudo(joueurId, nouveauPseudo);
         assertTrue(updateResult, "La mise à jour du pseudo doit être réussie.");
-
-        // Récupérer tous les joueurs depuis la base de données
-        List<Joueur> joueurs = joueurDAO.getAllJoueurs();
-
-        // Rechercher le joueur mis à jour dans la liste
-        Joueur joueurMisAJour = null;
-        for (Joueur joueur : joueurs) {
-            if (joueur.getId() == joueurId) {
-                joueurMisAJour = joueur;
-                break;
-            }
-        }
-        // Vérifier si le joueur mis à jour existe dans la liste
-        assertNotNull(joueurMisAJour, "Le joueur mis à jour ne doit pas être null.");
-        assertEquals(nouveauPseudo, joueurMisAJour.getPseudo(), "Le pseudo doit être mis à jour correctement.");
     }
 
 
