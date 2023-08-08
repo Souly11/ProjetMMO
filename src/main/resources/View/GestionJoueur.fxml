@@ -3,6 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -14,9 +15,9 @@
 
 <AnchorPane prefHeight="565.0" prefWidth="986.0" style="-fx-background-color: #1E5945;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.helha.projetmmo.Controllers.GestionJoueurController">
    <children>
-      <TableView fx:id="bourse" layoutX="552.0" layoutY="180.0" prefHeight="284.0" prefWidth="133.0">
+      <TableView fx:id="bourse" layoutX="631.0" layoutY="138.0" prefHeight="284.0" prefWidth="133.0">
         <columns>
-          <TableColumn fx:id="dragme" prefWidth="132.0" text="C1" />
+          <TableColumn fx:id="dragme" prefWidth="132.0" style="-fx-alignment: center" text="Dragmes" />
         </columns>
       </TableView>
       <Label layoutX="330.0" layoutY="25.0" text="Gestion du Joueur">
@@ -45,47 +46,47 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label layoutX="35.0" layoutY="155.0" text="Pseudo">
+      <Label layoutX="35.0" layoutY="155.0" text="Pseudo" textFill="#e8dfdf">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="121.0" layoutY="155.0" text="--&gt;">
+      <Label layoutX="121.0" layoutY="155.0" text="--&gt;" textFill="#e8dfdf">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="pseudo" layoutX="171.0" layoutY="155.0" text="Pseudo">
+      <Label fx:id="pseudo" layoutX="171.0" layoutY="155.0" text="Pseudo" textFill="#e8dfdf">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="40.0" layoutY="209.0" text="E-mail">
+      <Label layoutX="40.0" layoutY="209.0" text="E-mail" textFill="#e8dfdf">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="121.0" layoutY="209.0" text="--&gt;">
+      <Label layoutX="121.0" layoutY="209.0" text="--&gt;" textFill="#e8dfdf">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="email" layoutX="180.0" layoutY="209.0" text="email">
+      <Label fx:id="email" layoutX="171.0" layoutY="209.0" text="email" textFill="#e8dfdf">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="statut" layoutX="179.0" layoutY="265.0" text="statut">
+      <Label fx:id="statut" layoutX="170.0" layoutY="268.0" text="statut" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="265.0" text="Statut">
+      <Label layoutX="41.0" layoutY="265.0" text="Statut" textFill="#e8dfdf">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="807.0" layoutY="279.0" prefHeight="0.0" prefWidth="65.0" rotate="90.0" text="--&gt;">
+      <Label layoutX="714.0" layoutY="495.0" prefHeight="0.0" prefWidth="65.0" text="--&gt;" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
@@ -93,41 +94,90 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Label>
-      <Button layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#switchToMainController" prefHeight="57.0" prefWidth="147.0" text="Retour " />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="374.0" prefHeight="35.0" prefWidth="227.0" text="Modifier le pseudo" textAlignment="CENTER" textFill="#f7f7f7" underline="true">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
       <TextField fx:id="pseudoTF" layoutX="28.0" layoutY="423.0" prefHeight="38.0" prefWidth="305.0" />
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="486.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="219.0" style="-fx-background-color: green;" text="Modifier" textAlignment="CENTER" textFill="WHITE">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="486.0" mnemonicParsing="false" onAction="#updatePseudoJoueur" prefHeight="50.0" prefWidth="219.0" style="-fx-background-color: green;" text="Modifier" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="561.0" layoutY="481.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: blue;" text="Gérer la bourse" textFill="WHITE">
+      <Button layoutX="640.0" layoutY="439.0" mnemonicParsing="false" onAction="#supprimerDragme" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: red;" text="Supprimer" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="505.0" layoutY="133.0" prefHeight="35.0" prefWidth="227.0" text="Bourse" textAlignment="CENTER" textFill="#f7f7f7" underline="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="584.0" layoutY="91.0" prefHeight="35.0" prefWidth="227.0" text="Bourse" textAlignment="CENTER" textFill="#f7f7f7" underline="true">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="744.0" layoutY="224.0" text="Montant de la bourse">
+      <Label layoutX="493.0" layoutY="506.0" text="Montant de la bourse" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="montant" layoutX="744.0" layoutY="348.0" prefHeight="75.0" prefWidth="191.0" text="Montant">
+      <Label fx:id="montant" layoutX="795.0" layoutY="503.0" prefHeight="38.0" prefWidth="172.0" text="Montant" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="121.0" layoutY="265.0" text="--&gt;">
+      <Label layoutX="121.0" layoutY="265.0" text="--&gt;" textFill="#e8dfdf">
          <font>
             <Font size="20.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="premiumRadioButton" layoutX="28.0" layoutY="77.0" mnemonicParsing="false" onAction="#updateStatut" prefHeight="50.0" prefWidth="166.0" text="Premium" textFill="#e3a749">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="freeRadioButton" layoutX="28.0" layoutY="20.0" mnemonicParsing="false" onAction="#updateStatut" prefHeight="50.0" prefWidth="166.0" text="Free" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </RadioButton>
+      <Button layoutX="552.0" layoutY="209.0" mnemonicParsing="false" onAction="#ajouterPiece2" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: yellow;" text="Pièce 2">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="461.0" layoutY="209.0" mnemonicParsing="false" onAction="#ajouterPiece1" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: yellow;" text="Pièce 1">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="552.0" layoutY="280.0" mnemonicParsing="false" onAction="#ajouterBillet10" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #9f03d1;" text="Billet 10" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="461.0" layoutY="280.0" mnemonicParsing="false" onAction="#ajouterBillet5" prefHeight="30.0" prefWidth="65.0" style="-fx-background-color: #9f03d1;" text="Billet 5" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="boutonAjouterBillet50" layoutX="883.0" layoutY="224.0" mnemonicParsing="false" onAction="#ajouterBillet50" prefHeight="30.0" prefWidth="73.0" style="-fx-background-color: orange;" text="Billet 50" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="boutonAjouterBillet20" layoutX="775.0" layoutY="224.0" mnemonicParsing="false" onAction="#ajouterBillet20" prefHeight="30.0" prefWidth="73.0" style="-fx-background-color: orange;" text="Billet 20" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="501.0" layoutY="153.0" prefHeight="35.0" prefWidth="73.0" text="Free" textAlignment="CENTER" textFill="#f7f7f7" underline="true">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="804.0" layoutY="153.0" prefHeight="35.0" prefWidth="115.0" text="Premium" textAlignment="CENTER" textFill="#f7f7f7" underline="true">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
    </children>

@@ -18,8 +18,6 @@ public class Test_JoueurDAO {
 
     private JoueurDAO joueurDAO = new JoueurDAOImpl();
 
-
-
     @Test
     @Order(1)
     public void testAjouterJoueur() throws SQLException {
@@ -59,5 +57,47 @@ public class Test_JoueurDAO {
             System.out.println(personnage.toString());
         }
     }
+
+    @Test
+    @Order(5)
+    public void testExisteJoueur() throws SQLException {
+        // Supposons que ces joueurs existent déjà dans la base de données
+        String pseudoExistant = "Taj";
+        String emailExistant = "taj@gmail.com";
+
+        // Test lorsque le joueur existe dans la base de données
+        boolean joueurExistantExiste = joueurDAO.existeJoueur(pseudoExistant, emailExistant);
+        assertTrue(joueurExistantExiste, "Le joueur existant doit exister dans la base de données.");
+    }
+
+    @Test
+    @Order(6)
+    public void testUpdatePseudo() throws SQLException {
+        // Supposons que le joueur avec l'ID 1 existe déjà dans la base de données
+        int joueurId = 8;
+        String nouveauPseudo = "Taj";
+
+        boolean updateResult = joueurDAO.updatePseudo(joueurId, nouveauPseudo);
+        assertTrue(updateResult, "La mise à jour du pseudo doit être réussie.");
+
+        // Récupérer tous les joueurs depuis la base de données
+        List<Joueur> joueurs = joueurDAO.getAllPersonnages();
+
+        // Rechercher le joueur mis à jour dans la liste
+        Joueur joueurMisAJour = null;
+        for (Joueur joueur : joueurs) {
+            if (joueur.getId() == joueurId) {
+                joueurMisAJour = joueur;
+                break;
+            }
+        }
+
+        // Vérifier si le joueur mis à jour existe dans la liste
+        assertNotNull(joueurMisAJour, "Le joueur mis à jour ne doit pas être null.");
+        assertEquals(nouveauPseudo, joueurMisAJour.getPseudo(), "Le pseudo doit être mis à jour correctement.");
+    }
+
+
+
 
 }

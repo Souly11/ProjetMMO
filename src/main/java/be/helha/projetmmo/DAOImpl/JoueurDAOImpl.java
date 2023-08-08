@@ -45,7 +45,6 @@ public class JoueurDAOImpl implements JoueurDAO {
                 con.close();
             }
         }
-
         return existe;
     }
 
@@ -202,6 +201,68 @@ public class JoueurDAOImpl implements JoueurDAO {
 
         return joueurs;
     }
+
+    @Override
+    public boolean updatePseudo(int joueurId, String nouveauPseudo) throws SQLException {
+        Connection con = null;
+        PreparedStatement stmt = null;
+
+        try {
+            con = DaoFactory.getInstance().getConnexion();
+            String updateQuery = "UPDATE joueur SET pseudo = ? WHERE id = ?";
+            stmt = con.prepareStatement(updateQuery);
+            stmt.setString(1, nouveauPseudo);
+            stmt.setInt(2, joueurId);
+
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer l'exception appropriée (relever ou lancer une nouvelle exception par exemple)
+            throw e;
+        } finally {
+            // Fermer les ressources de manière appropriée
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    // Classe GestionJoueurImpl
+    @Override
+    public boolean updateStatut(int joueurId, boolean newStatut) throws SQLException {
+        Connection con = null;
+        PreparedStatement stmt = null;
+
+        try {
+            con = DaoFactory.getInstance().getConnexion();
+            String updateQuery = "UPDATE joueur SET statut = ? WHERE id = ?";
+            stmt = con.prepareStatement(updateQuery);
+
+            // Convertir le statut boolean en chaîne "P" ou "F"
+            String statutString = newStatut ? "P" : "F";
+
+            stmt.setString(1, statutString);
+            stmt.setInt(2, joueurId);
+
+            int rowsUpdated = stmt.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
 
 
 }

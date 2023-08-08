@@ -5,16 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5561a949-c50c-41a5-9a07-577dd9765975" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/View/GestionJoueur.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_BourseDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/dragme.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/GestionJoueurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/GestionJoueurController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/BourseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/BourseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/JoueurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/JoueurDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/BourseDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/BourseDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Model/Dragmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Model/Dragmes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/JoueurDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/JoueurDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCase/GestionJoueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCase/GestionJoueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCaseImpl/GestionJoueurImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCaseImpl/GestionJoueurImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/View/GestionJoueur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/GestionJoueur.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/View/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_BourseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_BourseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_JoueurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_JoueurDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +31,16 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,7 +93,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test_BourseDAO.testCalculerTotalBourseParJoueur" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Test_BourseDAO.testAjouterDragmeBourse" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -90,7 +106,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;be.helha.tests.Test_BourseDAO.testCalculerTotalBourseParJoueur&quot;" />
+            <option value="&quot;be.helha.tests.Test_BourseDAO.testAjouterDragmeBourse&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -100,7 +116,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Test_BourseDAO.testRecupererContenuBourseParIdJoueur" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Test_BourseDAO.testAjouterPieceBourse" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -113,7 +129,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;be.helha.tests.Test_BourseDAO.testRecupererContenuBourseParIdJoueur&quot;" />
+            <option value="&quot;be.helha.tests.Test_BourseDAO.testAjouterPieceBourse&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -123,7 +139,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Test_JoueurDAO.testAjouterJoueur" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Test_BourseDAO.testSupprimerDragmeBourse" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -136,7 +152,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;be.helha.tests.Test_JoueurDAO.testAjouterJoueur&quot;" />
+            <option value="&quot;be.helha.tests.Test_BourseDAO.testSupprimerDragmeBourse&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -146,7 +162,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Test_JoueurDAO.testGetAllPersonnages" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Test_JoueurDAO.testExisteJoueur" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -159,7 +175,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;be.helha.tests.Test_JoueurDAO.testGetAllPersonnages&quot;" />
+            <option value="&quot;be.helha.tests.Test_JoueurDAO.testExisteJoueur&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -169,7 +185,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Test_JoueurDAO.testSupprimerJoueur" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Test_JoueurDAO.testUpdatePseudo" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -182,7 +198,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;be.helha.tests.Test_JoueurDAO.testSupprimerJoueur&quot;" />
+            <option value="&quot;be.helha.tests.Test_JoueurDAO.testUpdatePseudo&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -194,11 +210,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Test_BourseDAO.testCalculerTotalBourseParJoueur" />
-        <item itemvalue="Gradle.Test_BourseDAO.testRecupererContenuBourseParIdJoueur" />
-        <item itemvalue="Gradle.Test_JoueurDAO.testAjouterJoueur" />
-        <item itemvalue="Gradle.Test_JoueurDAO.testSupprimerJoueur" />
-        <item itemvalue="Gradle.Test_JoueurDAO.testGetAllPersonnages" />
+        <item itemvalue="Gradle.Test_BourseDAO.testSupprimerDragmeBourse" />
+        <item itemvalue="Gradle.Test_BourseDAO.testAjouterDragmeBourse" />
+        <item itemvalue="Gradle.Test_BourseDAO.testAjouterPieceBourse" />
+        <item itemvalue="Gradle.Test_JoueurDAO.testUpdatePseudo" />
+        <item itemvalue="Gradle.Test_JoueurDAO.testExisteJoueur" />
       </list>
     </recent_temporary>
   </component>
@@ -215,7 +231,7 @@
       <workItem from="1691233795655" duration="15769000" />
       <workItem from="1691257482885" duration="3257000" />
       <workItem from="1691328523890" duration="3156000" />
-      <workItem from="1691413015287" duration="13603000" />
+      <workItem from="1691413015287" duration="38476000" />
     </task>
     <servers />
   </component>

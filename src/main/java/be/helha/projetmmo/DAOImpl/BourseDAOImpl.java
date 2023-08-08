@@ -153,4 +153,110 @@ public class BourseDAOImpl implements BourseDAO {
         return montantTotal;
     }
 
+
+
+    @Override
+    public void ajouterDragmeBourse(int joueurId, Dragmes dragme) {
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        try {
+            // Établir la connexion à la base de données
+            con = DaoFactory.getInstance().getConnexion();
+
+            // Vérifier le nombre d'objets actuellement dans la bourse
+            List<Dragmes> contenuBourse = recupererContenuBourseParJoueur(joueurId);
+            if (contenuBourse.size() >= 10) {
+                System.out.println("La bourse est pleine. Impossible d'ajouter une nouvelle pièce/billet.");
+                return;
+            }
+
+            // Convertir l'objet Dragmes en JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            String contenuJson = objectMapper.writeValueAsString(dragme);
+
+            // Ajouter la nouvelle pièce à la liste
+            contenuBourse.add(dragme);
+
+            // Convertir la liste complète en JSON
+            String contenuBourseJson = objectMapper.writeValueAsString(contenuBourse);
+
+            // Préparer la requête SQL pour mettre à jour le contenu de la bourse du joueur
+            String query = "UPDATE bourse SET contenu = ?::json WHERE joueur_id = ?";
+            ps = con.prepareStatement(query);
+
+            // Définir les paramètres de la requête
+            ps.setString(1, contenuBourseJson);
+            ps.setInt(2, joueurId);
+
+            // Exécuter la requête de mise à jour
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("La dragme a été ajoutée à la bourse du joueur.");
+            } else {
+                System.out.println("Erreur lors de l'ajout de la pièce à la bourse du joueur.");
+            }
+
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+            // Gérer l'exception selon vos besoins (par exemple, afficher un message d'erreur à l'utilisateur)
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void supprimerDragmeBourse(int joueurId, Dragmes dragme) {
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        try {
+            con = DaoFactory.getInstance().getConnexion();
+
+            // Récupérer le contenu actuel de la bourse du joueur
+            List<Dragmes> contenuBourse = recupererContenuBourseParJoueur(joueurId);
+
+            // Supprimer le dragme de la liste du contenu
+            contenuBourse.remove(dragme);
+
+            // Convertir la liste de contenu mise à jour en JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            String contenuJson = objectMapper.writeValueAsString(contenuBourse);
+
+            // Préparer la requête SQL pour mettre à jour le contenu de la bourse du joueur
+            String query = "UPDATE bourse SET contenu = ?::json WHERE joueur_id = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, contenuJson);
+            ps.setInt(2, joueurId);
+
+            // Exécuter la requête de mise à jour
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("Le dragme a été supprimé de la bourse du joueur.");
+            } else {
+                System.out.println("Erreur lors de la suppression du dragme de la bourse du joueur.");
+            }
+
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        } finally {
+            // fermetures des ressources
+        }
+    }
+
+
+
+
+
+
+
 }

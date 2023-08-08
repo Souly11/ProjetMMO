@@ -35,7 +35,6 @@ javafx {
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
-    //implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'org.postgresql:postgresql:42.2.18'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

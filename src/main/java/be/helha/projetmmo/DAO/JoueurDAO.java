@@ -9,9 +9,13 @@ public interface JoueurDAO {
 
     boolean ajouterJoueur(String nom, String email)throws SQLException;
 
-    public boolean supprimerJoueur(int joueurId);
+    boolean supprimerJoueur(int joueurId);
 
     List<Joueur> getAllPersonnages()throws SQLException;
 
     boolean existeJoueur(String pseudo, String email) throws SQLException;
+
+    boolean updatePseudo(int joueurId, String nouveauPseudo) throws SQLException;
+
+    boolean updateStatut(int joueurId, boolean newStatut) throws SQLException;
 }

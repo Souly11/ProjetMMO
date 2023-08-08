@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,7 +29,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-
     @FXML
     private final ObservableList<Joueur> tvObservableList = FXCollections.observableArrayList();
     @FXML
@@ -47,11 +47,12 @@ public class MainController implements Initializable {
     @FXML
     private TextField emailTF;
 
-
+    GestionJoueurImpl gestionJoueur = new GestionJoueurImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         initialisationDesDonnes();
+        pseudoTF.setPromptText("Entrez votre pseudo");
+        emailTF.setPromptText("Entrez votre e-mail (exemple@exemple.be)");
 
     }
 
@@ -67,29 +68,24 @@ public class MainController implements Initializable {
         });
 
         // Initialisez les données en appelant la méthode getAllPersonnages de la DAO
-        try {
-            JoueurDAO joueurDAO = new JoueurDAOImpl();
-            List<Joueur> joueurs = joueurDAO.getAllPersonnages();
+        JoueurDAO joueurDAO = new JoueurDAOImpl();
+        List<Joueur> joueurs = gestionJoueur.listJoueur();
 
-            // Ajoutez les joueurs à l'ObservableList tvObservableList
-            tvObservableList.addAll(joueurs);
+        // Ajoutez les joueurs à l'ObservableList tvObservableList
+        tvObservableList.addAll(joueurs);
 
-            // Affichez les joueurs dans la TableView
-            joueur.setItems(tvObservableList);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Gérer l'exception selon vos besoins (par exemple, afficher un message d'erreur à l'utilisateur)
-        }
+        // Affichez les joueurs dans la TableView
+        joueur.setItems(tvObservableList);
     }
 
     @FXML
-    private void SelectJoueur(MouseEvent mouseEvent) {
+    private void SelectJoueur(MouseEvent mouseEvent) throws SQLException {
         if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2) {
             Joueur selectedJoueur = joueur.getSelectionModel().getSelectedItem();
             // Récupérer le contenu de la bourse et le montant total
             BourseDAO bourseDAO = new BourseDAOImpl();
-            List<Dragmes> contenuBourse = bourseDAO.recupererContenuBourseParJoueur(selectedJoueur.getId());
-            int montantTotalBourse = bourseDAO.calculerTotalBourseParJoueur(selectedJoueur.getId());
+            List<Dragmes> contenuBourse = gestionJoueur.recupererContenuBourseParJoueur(selectedJoueur.getId());
+            int montantTotalBourse = gestionJoueur.calculerTotalBourseParJoueur(selectedJoueur.getId());
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/GestionJoueur.fxml"));
             Parent userDetailsParent;
@@ -99,19 +95,26 @@ public class MainController implements Initializable {
                 throw new RuntimeException(e);
             }
             GestionJoueurController joueurDetailsController = loader.getController();
+            joueurDetailsController.setMainController(this);
             joueurDetailsController.initData(selectedJoueur, contenuBourse, montantTotalBourse);
 
-            Scene currentScene = joueur.getScene();
+            // Créer une nouvelle scène et une nouvelle fenêtre pour la nouvelle vue
             Scene userDetailsScene = new Scene(userDetailsParent);
-            Stage stage = (Stage) currentScene.getWindow();
-            stage.setScene(userDetailsScene);
-            stage.show();
+            Stage nouvelleFenetreStage = new Stage();
+            nouvelleFenetreStage.setScene(userDetailsScene);
+
+            // Afficher la nouvelle fenêtre en mode modal (empêche l'interaction avec la fenêtre principale)
+            nouvelleFenetreStage.initModality(Modality.APPLICATION_MODAL);
+            nouvelleFenetreStage.showAndWait();
+
+            refreshTableView();
         }
     }
 
+
     @FXML
     private void ajouterJoueur() {
-        GestionJoueurImpl gestionJoueur = new GestionJoueurImpl();
+
         String pseudo = pseudoTF.getText();
         String email = emailTF.getText();
 
@@ -193,7 +196,6 @@ public class MainController implements Initializable {
 
     @FXML
     private void supprimerJoueur() {
-        GestionJoueurImpl gestionJoueur = new GestionJoueurImpl();
         Joueur joueurSelectionne = joueur.getSelectionModel().getSelectedItem();
         if (joueurSelectionne != null) {
             // Afficher une boîte de dialogue de confirmation de suppression
@@ -222,7 +224,34 @@ public class MainController implements Initializable {
         }
     }
 
+    // Méthode pour rafraîchir la TableView après les modifications dans la deuxième fenêtre
+    public void refreshTableView() {
+        tvObservableList.clear();
+        JoueurDAO joueurDAO = new JoueurDAOImpl();
+        List<Joueur> joueurs = gestionJoueur.listJoueur();
+        tvObservableList.addAll(joueurs);
+        joueur.setItems(tvObservableList);
+    }
 
+    // Méthode pour mettre à jour le pseudo dans le premier contrôleur à partir du deuxième contrôleur
+    public void updatePseudoInMainController(int joueurId, String nouveauPseudo) {
+        for (Joueur joueur : tvObservableList) {
+            if (joueur.getId() == joueurId) {
+                joueur.setPseudo(nouveauPseudo);
+                break;
+            }
+        }
+    }
+
+    // Méthode pour mettre à jour le statut dans le premier contrôleur à partir du deuxième contrôleur
+    public void updateStatusInMainController(int joueurId, boolean newStatus) {
+        for (Joueur joueur : tvObservableList) {
+            if (joueur.getId() == joueurId) {
+                joueur.setStatus(newStatus);
+                break;
+            }
+        }
+    }
 
 
 }
