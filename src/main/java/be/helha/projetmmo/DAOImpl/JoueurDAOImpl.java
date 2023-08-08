@@ -15,6 +15,44 @@ import java.util.List;
 
 public class JoueurDAOImpl implements JoueurDAO {
 
+    public Joueur getJoueurById(int joueurId) throws SQLException {
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Joueur joueur = null;
+
+        try {
+            con = DaoFactory.getInstance().getConnexion();
+            String selectQuery = "SELECT * FROM joueur WHERE id = ?";
+            stmt = con.prepareStatement(selectQuery);
+            stmt.setInt(1, joueurId);
+
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                joueur = new Joueur();
+                joueur.setId(rs.getInt("id"));
+                joueur.setPseudo(rs.getString("pseudo"));
+                joueur.setEmail(rs.getString("mail"));
+                joueur.setStatus(rs.getString("statut").equals("P"));
+            }
+
+            return joueur;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
     @Override
     public boolean existeJoueur(String pseudo, String email) throws SQLException {
         boolean existe = false;
@@ -161,7 +199,7 @@ public class JoueurDAOImpl implements JoueurDAO {
     }
 
     @Override
-    public List<Joueur> getAllPersonnages() throws SQLException {
+    public List<Joueur> getAllJoueurs() throws SQLException {
         List<Joueur> joueurs = new ArrayList<>();
         Connection con = null;
         Statement stmt = null;

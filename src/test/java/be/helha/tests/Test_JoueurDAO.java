@@ -42,11 +42,29 @@ public class Test_JoueurDAO {
     }
 
     @Test
+    @Order(3)
+    public void testUpdateStatut() throws SQLException {
+        int joueurId = 8;
+        boolean nouveauStatut = true;
+
+        Joueur joueurAvantMiseAJour = joueurDAO.getJoueurById(joueurId);
+        assertNotNull(joueurAvantMiseAJour, "Le joueur avant la mise à jour ne doit pas être null.");
+
+        boolean updateResult = joueurDAO.updateStatut(joueurId, nouveauStatut);
+        assertTrue(updateResult, "La mise à jour du statut doit être réussie.");
+
+        Joueur joueurApresMiseAJour = joueurDAO.getJoueurById(joueurId);
+        assertNotNull(joueurApresMiseAJour, "Le joueur après la mise à jour ne doit pas être null.");
+        assertEquals(nouveauStatut, joueurApresMiseAJour.isStatus(), "Le statut doit être mis à jour correctement.");
+    }
+
+
+    @Test
     @Order(4)
     public void testGetAllPersonnages() {
         List<Joueur> personnages = null;
         try {
-            personnages = joueurDAO.getAllPersonnages();
+            personnages = joueurDAO.getAllJoueurs();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -81,7 +99,7 @@ public class Test_JoueurDAO {
         assertTrue(updateResult, "La mise à jour du pseudo doit être réussie.");
 
         // Récupérer tous les joueurs depuis la base de données
-        List<Joueur> joueurs = joueurDAO.getAllPersonnages();
+        List<Joueur> joueurs = joueurDAO.getAllJoueurs();
 
         // Rechercher le joueur mis à jour dans la liste
         Joueur joueurMisAJour = null;
@@ -91,11 +109,12 @@ public class Test_JoueurDAO {
                 break;
             }
         }
-
         // Vérifier si le joueur mis à jour existe dans la liste
         assertNotNull(joueurMisAJour, "Le joueur mis à jour ne doit pas être null.");
         assertEquals(nouveauPseudo, joueurMisAJour.getPseudo(), "Le pseudo doit être mis à jour correctement.");
     }
+
+
 
 
 

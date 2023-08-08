@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5561a949-c50c-41a5-9a07-577dd9765975" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dragme.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/GestionJoueurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/GestionJoueurController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/BourseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/BourseDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/JoueurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/JoueurDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/BourseDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/BourseDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/JoueurDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/JoueurDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCase/GestionJoueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCase/GestionJoueur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCaseImpl/GestionJoueurImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCaseImpl/GestionJoueurImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/View/GestionJoueur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/GestionJoueur.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/View/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_BourseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_BourseDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_JoueurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_JoueurDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +76,7 @@
       <recent name="S:\Projet\ProjetMMO\src\main\resources\View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HomePage">
+  <component name="RunManager" selected="Gradle.Test_JoueurDAO.testUpdateStatut">
     <configuration name="HomePage" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="be.helha.projetmmo.HelloApplication" />
       <module name="ProjetMMO.main" />
@@ -162,29 +153,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="Test_JoueurDAO.testExisteJoueur" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;be.helha.tests.Test_JoueurDAO.testExisteJoueur&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="Test_JoueurDAO.testUpdatePseudo" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -208,13 +176,36 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="Test_JoueurDAO.testUpdateStatut" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;be.helha.tests.Test_JoueurDAO.testUpdateStatut&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Test_JoueurDAO.testUpdateStatut" />
         <item itemvalue="Gradle.Test_BourseDAO.testSupprimerDragmeBourse" />
         <item itemvalue="Gradle.Test_BourseDAO.testAjouterDragmeBourse" />
         <item itemvalue="Gradle.Test_BourseDAO.testAjouterPieceBourse" />
         <item itemvalue="Gradle.Test_JoueurDAO.testUpdatePseudo" />
-        <item itemvalue="Gradle.Test_JoueurDAO.testExisteJoueur" />
       </list>
     </recent_temporary>
   </component>
@@ -231,7 +222,8 @@
       <workItem from="1691233795655" duration="15769000" />
       <workItem from="1691257482885" duration="3257000" />
       <workItem from="1691328523890" duration="3156000" />
-      <workItem from="1691413015287" duration="38476000" />
+      <workItem from="1691413015287" duration="38559000" />
+      <workItem from="1691491737822" duration="12371000" />
     </task>
     <servers />
   </component>

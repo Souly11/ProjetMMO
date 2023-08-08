@@ -219,16 +219,21 @@ public class GestionJoueurController implements Initializable {
             statut.setText("Free");
             statut.setStyle("-fx-text-fill: blanc;");
         }
-        // Mettre à jour le statut du joueur en base de données
-        GestionJoueur gestionJoueur = new GestionJoueurImpl();
+
+        // Mettre à jour le statut du joueur dans la base de données
         boolean updated = gestionJoueur.updateStatut(joueur.getId(), newStatus);
         if (!updated) {
             // Gérer l'erreur si la mise à jour en base de données échoue
             System.err.println("Erreur : la mise à jour du statut en base de données a échoué.");
         }
+
+        // Rafraîchir la vue de la bourse après la mise à jour du statut
+        rafraichirBourse(joueur.getId());
+
         // Après avoir mis à jour le statut, appelez la méthode "updateStatusInMainController" dans le contrôleur "MainController"
         mainController.updateStatusInMainController(joueur.getId(), newStatus);
     }
+
 
     private void rafraichirBourse(int joueurId) {
         // Mettre à jour la tableview avec le contenu de la bourse du joueur
@@ -291,13 +296,20 @@ public class GestionJoueurController implements Initializable {
     @FXML
     private void ajouterBillet20() throws SQLException {
         int joueurId = joueur.getId();
+        int limite = 10;
+        List<Dragmes> contenuBourse = gestionJoueur.recupererContenuBourseParJoueur(joueurId);
         // Vérifier le statut du joueur
         boolean isPremium = joueur.isStatus();
-
-        if (isPremium && (billet20Count < 1)) {
+        if (contenuBourse.size() >= limite) {
+            // Afficher une alerte pour indiquer que la limite est atteinte
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Limite atteinte");
+            alert.setHeaderText(null);
+            alert.setContentText("La limite de la bourse est atteinte (10 éléments maximum). Vous ne pouvez plus ajouter de dragme.");
+            alert.showAndWait();
+        } else if (isPremium && (billet20Count < 1)) {
             // Ajouter le billet de 20 à la bourse du joueur
-            BourseDAO bourseDAO = new BourseDAOImpl();
-            bourseDAO.ajouterDragmeBourse(joueurId, Dragmes.billet_20);
+            gestionJoueur.ajouterDragmeBourse(joueurId, Dragmes.billet_20);
 
             // Incrémenter le compteur de billets de 20
             billet20Count++;
@@ -325,13 +337,20 @@ public class GestionJoueurController implements Initializable {
     @FXML
     private void ajouterBillet50() throws SQLException {
         int joueurId = joueur.getId();
+        int limite = 10;
+        List<Dragmes> contenuBourse = gestionJoueur.recupererContenuBourseParJoueur(joueurId);
         // Vérifier le statut du joueur
         boolean isPremium = joueur.isStatus();
-
-        if (isPremium && (billet50Count < 1)) {
+        if (contenuBourse.size() >= limite) {
+            // Afficher une alerte pour indiquer que la limite est atteinte
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Limite atteinte");
+            alert.setHeaderText(null);
+            alert.setContentText("La limite de la bourse est atteinte (10 éléments maximum). Vous ne pouvez plus ajouter de dragme.");
+            alert.showAndWait();
+        } else if (isPremium && (billet50Count < 1)) {
             // Ajouter le billet de 50 à la bourse du joueur
-            BourseDAO bourseDAO = new BourseDAOImpl();
-            bourseDAO.ajouterDragmeBourse(joueurId, Dragmes.billet_50);
+            gestionJoueur.ajouterDragmeBourse(joueurId, Dragmes.billet_50);
 
             // Incrémenter le compteur de billets de 50
             billet50Count++;
@@ -360,32 +379,38 @@ public class GestionJoueurController implements Initializable {
     private void supprimerDragme() {
         Dragmes dragmeSelectionne = bourse.getSelectionModel().getSelectedItem();
         if (dragmeSelectionne != null) {
-            // Afficher une boîte de dialogue de confirmation de suppression
-            Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmationDialog.setTitle("Confirmation de suppression");
-            confirmationDialog.setHeaderText(null);
-            confirmationDialog.setContentText("Voulez-vous vraiment supprimer ce dragme de la bourse ?");
+            boolean isFree = !joueur.isStatus();
+            boolean hasBillet20Or50 = dragmeSelectionne == Dragmes.billet_20 || dragmeSelectionne == Dragmes.billet_50;
 
-            ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
-            ButtonType buttonTypeCancel = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
+            if (isFree && hasBillet20Or50) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Opération non autorisée");
+                alert.setHeaderText(null);
+                alert.setContentText("Les joueurs de statut 'free' ne peuvent pas supprimer de billets de 20 ou 50.");
+                alert.showAndWait();
+            } else {
+                Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
+                confirmationDialog.setTitle("Confirmation de suppression");
+                confirmationDialog.setHeaderText(null);
+                confirmationDialog.setContentText("Voulez-vous vraiment supprimer ce dragme de la bourse ?");
 
-            confirmationDialog.getButtonTypes().setAll(buttonTypeOk, buttonTypeCancel);
-            confirmationDialog.showAndWait().ifPresent(result -> {
-                if (result == buttonTypeOk) {
-                    // Récupérer l'ID du joueur (remplacez 8 par la valeur appropriée)
-                    int joueurId = joueur.getId();
+                ButtonType buttonTypeOk = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+                ButtonType buttonTypeCancel = new ButtonType("Annuler", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-                    gestionJoueur.supprimerDragmeBourse(joueurId, dragmeSelectionne);
+                confirmationDialog.getButtonTypes().setAll(buttonTypeOk, buttonTypeCancel);
+                confirmationDialog.showAndWait().ifPresent(result -> {
+                    if (result == buttonTypeOk) {
+                        int joueurId = joueur.getId();
 
-                    // Mettre à jour le montant total en soustrayant la valeur du dragme
-                    montantTotalBourse -= dragmeSelectionne.getValeur();
-                    Platform.runLater(() -> montant.setText(String.valueOf(montantTotalBourse) + " Dragmes"));
-                    // Rafraîchir la vue de la bourse (vous devez mettre à jour la tableview avec le contenu de la bourse)
-                    rafraichirBourse(joueurId);
-                }
-            });
+                        gestionJoueur.supprimerDragmeBourse(joueurId, dragmeSelectionne);
+
+                        montantTotalBourse -= dragmeSelectionne.getValeur();
+                        Platform.runLater(() -> montant.setText(String.valueOf(montantTotalBourse) + " Dragmes"));
+                        rafraichirBourse(joueurId);
+                    }
+                });
+            }
         } else {
-            // Afficher un message d'erreur indiquant qu'aucun dragme n'est sélectionné
             Alert errorDialog = new Alert(Alert.AlertType.ERROR);
             errorDialog.setTitle("Aucun dragme sélectionné");
             errorDialog.setHeaderText(null);
@@ -393,6 +418,7 @@ public class GestionJoueurController implements Initializable {
             errorDialog.showAndWait();
         }
     }
+
 
 
 

@@ -20,7 +20,7 @@ public class GestionJoueurImpl implements GestionJoueur {
     @Override
     public List<Joueur> listJoueur(){
         try{
-            return this.joueurDao.getAllPersonnages();
+            return this.joueurDao.getAllJoueurs();
         } catch (SQLException e) {
 
             e.printStackTrace();

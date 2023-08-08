@@ -146,14 +146,8 @@ public class BourseDAOImpl implements BourseDAO {
     @Override
     public int calculerTotalBourseParJoueur(int idJoueur) {
         List<Dragmes> contenuBourse = recupererContenuBourseParJoueur(idJoueur);
-        int montantTotal = 0;
-        for (Dragmes dragmes : contenuBourse) {
-            montantTotal += dragmes.getValeur();
-        }
-        return montantTotal;
+        return contenuBourse.stream().mapToInt(Dragmes::getValeur).sum();
     }
-
-
 
     @Override
     public void ajouterDragmeBourse(int joueurId, Dragmes dragme) {
