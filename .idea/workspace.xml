@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="4" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5561a949-c50c-41a5-9a07-577dd9765975" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/GestionJoueurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/GestionJoueurController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/BourseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/BourseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/JoueurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAO/JoueurDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/BourseDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/BourseDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/DaoFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/JoueurDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/JoueurDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_BourseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_BourseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_JoueurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/be/helha/tests/Test_JoueurDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/ParserConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/ParserConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/Persistance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/DAOImpl/Persistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Model/Bourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Model/Bourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Model/Dragmes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Model/Dragmes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Model/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/Model/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCase/GestionJoueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCase/GestionJoueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCaseImpl/GestionJoueurImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/helha/projetmmo/UseCaseImpl/GestionJoueurImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,17 +71,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;S:/Projet/ProjetMMO/src/main/resources&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "corretto-17",
+    "last_opened_file_path": "D:/javafx-sdk-15/lib",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Facets",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.39770114",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="S:\Projet\ProjetMMO\src\main\resources" />
@@ -198,8 +218,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Tests in 'ProjetMMO.test'" />
-        <item itemvalue="Gradle.Test_BourseDAO" />
         <item itemvalue="Gradle.Test_JoueurDAO" />
+        <item itemvalue="Gradle.Test_BourseDAO" />
         <item itemvalue="Gradle.Test_JoueurDAO.testUpdateStatut" />
         <item itemvalue="Gradle.Test_JoueurDAO.testGetJoueurById" />
       </list>
@@ -225,7 +245,12 @@
       <workItem from="1691580398598" duration="83000" />
       <workItem from="1691594785420" duration="1198000" />
       <workItem from="1691662222628" duration="6525000" />
-      <workItem from="1691670120555" duration="509000" />
+      <workItem from="1691670120555" duration="657000" />
+      <workItem from="1691675232509" duration="14000" />
+      <workItem from="1692021253032" duration="788000" />
+      <workItem from="1692022295132" duration="264000" />
+      <workItem from="1692030266040" duration="11000" />
+      <workItem from="1692529539035" duration="6009000" />
     </task>
     <servers />
   </component>

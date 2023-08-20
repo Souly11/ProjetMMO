@@ -19,6 +19,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Contrôleur de gestion des joueurs, gérant les informations du joueur et la gestion de sa bourse.
+ */
 public class GestionJoueurController implements Initializable {
 
     @FXML
@@ -117,6 +120,9 @@ public class GestionJoueurController implements Initializable {
         tvObservableList.setAll(contenuBourse);
         bourse.setItems(tvObservableList);
     }
+    /**
+     * Initialise le contrôleur et configure l'interface utilisateur.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         pseudoTF.setPromptText("Entrez un nouveau pseudo");
@@ -134,7 +140,9 @@ public class GestionJoueurController implements Initializable {
 
 
     }
-
+    /**
+     * Met à jour le pseudo du joueur avec le nouveau pseudo saisi par l'utilisateur.
+     */
     @FXML
     private void updatePseudoJoueur() {
         String nouveauPseudo = pseudoTF.getText();
@@ -204,7 +212,9 @@ public class GestionJoueurController implements Initializable {
         // Après avoir mis à jour le pseudo, appelez la méthode "updatePseudoInMainController" dans le contrôleur "MainController"
         mainController.updatePseudoInMainController(joueur.getId(), nouveauPseudo);
     }
-
+    /**
+     * Met à jour le statut du joueur (Premium ou Free) en fonction du RadioButton sélectionné.
+     */
     @FXML
     private void updateStatut() {
         // Mettre à jour le statut du joueur en fonction du RadioButton sélectionné
@@ -256,14 +266,18 @@ public class GestionJoueurController implements Initializable {
         mainController.updateStatusInMainController(joueur.getId(), newStatus);
     }
 
-
+    /**
+     * Rafraîchit la vue de la bourse du joueur après des modifications.
+     */
     private void rafraichirBourse(int joueurId) {
         // Mettre à jour la tableview avec le contenu de la bourse du joueur
         List<Dragmes> contenuBourse = gestionJoueur.recupererContenuBourseParJoueur(joueurId);
         bourse.getItems().clear();
         bourse.getItems().addAll(contenuBourse);
     }
-
+    /**
+     * Ajoute une pièce ou un billet à la bourse du joueur.
+     */
     @FXML
     private void ajouterPieceOuBillet(Dragmes dragme) {
         int joueurId = joueur.getId();
@@ -295,6 +309,9 @@ public class GestionJoueurController implements Initializable {
         }
     }
 
+    /**
+     * Ajoute une pièce ou billet à la bourse du joueur.
+     */
     @FXML
     private void ajouterPiece1() {
         ajouterPieceOuBillet(Dragmes.piece_1);
@@ -356,6 +373,7 @@ public class GestionJoueurController implements Initializable {
         }
     }
 
+
     @FXML
     private void ajouterBillet50() throws SQLException {
         int joueurId = joueur.getId();
@@ -397,6 +415,9 @@ public class GestionJoueurController implements Initializable {
         }
     }
 
+    /**
+     * Supprime un élément de la bourse du joueur.
+     */
     @FXML
     private void supprimerDragme() {
         Dragmes dragmeSelectionne = bourse.getSelectionModel().getSelectedItem();

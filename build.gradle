@@ -29,9 +29,10 @@ application {
 }
 
 javafx {
-    version = '17.0.2'
+    version = '15'
     modules = ['javafx.controls', 'javafx.fxml']
 }
+
 
 dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
@@ -44,7 +45,6 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
     testImplementation 'org.mockito:mockito-core:5.2.0'
-
 }
 
 test {

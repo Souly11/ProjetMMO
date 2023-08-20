@@ -11,12 +11,18 @@ import be.helha.projetmmo.UseCase.GestionJoueur;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Implémentation de l'interface GestionJoueur pour gérer les opérations liées aux joueurs.
+ */
 public class GestionJoueurImpl implements GestionJoueur {
 
     private final JoueurDAO joueurDao = new JoueurDAOImpl();
 
     private final BourseDAO bourseDAO = new BourseDAOImpl();
 
+    /**
+     * Récupère la liste de tous les joueurs dans le jeu.
+     */
     @Override
     public List<Joueur> listJoueur(){
         try{
@@ -28,6 +34,9 @@ public class GestionJoueurImpl implements GestionJoueur {
         return null;
     }
 
+    /**
+     * Ajoute un nouveau joueur avec le nom et l'email spécifiés.
+     */
     @Override
     public boolean ajouterJoueur(String nom, String email) {
         JoueurDAO joueurDAO = new JoueurDAOImpl();
@@ -38,11 +47,17 @@ public class GestionJoueurImpl implements GestionJoueur {
         }
     }
 
+    /**
+     * Supprime le joueur avec l'ID spécifié.
+     */
     @Override
     public void supprimerJoueur(int id) {
         this.joueurDao.supprimerJoueur(id);
     }
 
+    /**
+     * Vérifie si un joueur avec le nom et l'email spécifiés existe déjà.
+     */
     @Override
     public boolean existeJoueur(String nom, String email) {
         List<Joueur> joueurs = listJoueur();
@@ -55,7 +70,9 @@ public class GestionJoueurImpl implements GestionJoueur {
         }
         return false;
     }
-
+    /**
+     * Met à jour le pseudo du joueur avec l'ID spécifié.
+     */
     @Override
     public boolean updatePseudo(int joueurId, String nouveauPseudo) {
         try {
@@ -65,6 +82,9 @@ public class GestionJoueurImpl implements GestionJoueur {
         }
     }
 
+    /**
+     * Met à jour le statut du joueur avec l'ID spécifié.
+     */
     @Override
     public boolean updateStatut(int joueurId, boolean newStatut) {
         try {
@@ -74,6 +94,9 @@ public class GestionJoueurImpl implements GestionJoueur {
         }
     }
 
+    /**
+     * Ajoute un dragme à la bourse du joueur avec l'ID spécifié.
+     */
     @Override
     public void ajouterDragmeBourse(int joueurId, Dragmes dragme) {
         try {
@@ -83,6 +106,9 @@ public class GestionJoueurImpl implements GestionJoueur {
         }
     }
 
+    /**
+     * Calcule le total des dragmes dans la bourse du joueur avec l'ID spécifié.
+     */
     @Override
     public int calculerTotalBourseParJoueur(int idJoueur) {
         try {
@@ -92,11 +118,17 @@ public class GestionJoueurImpl implements GestionJoueur {
         }
     }
 
+    /**
+     * Récupère le contenu de la bourse du joueur avec l'ID spécifié.
+     */
     @Override
     public List<Dragmes> recupererContenuBourseParJoueur(int idJoueur) {
         return bourseDAO.recupererContenuBourseParJoueur(idJoueur);
     }
 
+    /**
+     * Supprime un dragme de la bourse du joueur avec l'ID spécifié.
+     */
     @Override
     public void supprimerDragmeBourse(int joueurId, Dragmes dragme) {
         BourseDAO bourseDAO = new BourseDAOImpl();

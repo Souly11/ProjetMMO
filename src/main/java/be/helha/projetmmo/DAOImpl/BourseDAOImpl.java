@@ -12,6 +12,23 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Cette classe implémente l'interface BourseDAO et gère l'accès aux données de la bourse des joueurs
+ * dans une base de données. Elle permet d'ajouter, supprimer, récupérer et effectuer des opérations
+ * sur les dragmes dans la bourse d'un joueur.
+ *
+ * Les méthodes de cette classe utilisent des opérations sur la base de données pour interagir
+ * avec les données de la bourse des joueurs.
+ *
+ * Cette classe utilise également la bibliothèque Jackson pour la sérialisation et la désérialisation
+ * des données JSON, car le contenu de la bourse est stocké sous forme de JSON dans la base de données.
+ *
+ * Pour chaque opération, la classe assure la gestion des connexions à la base de données, la conversion
+ * des données en formats appropriés et la mise à jour de la base de données.
+ *
+ * @author El kadaoui Soulyman
+ */
+
 public class BourseDAOImpl implements BourseDAO {
 
     // Méthode pour ajouter une bourse dans la base de données

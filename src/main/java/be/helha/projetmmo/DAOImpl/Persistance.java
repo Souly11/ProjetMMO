@@ -5,6 +5,27 @@ import be.helha.projetmmo.DAO.Dao;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * La classe Persistance représente la configuration de la persistance des données de l'application.
+ * Elle contient des informations telles que le type de persistance (par exemple, "DB" pour base de données),
+ * l'URL d'accès à la base de données, le nom d'utilisateur et le mot de passe.
+ *
+ * De plus, cette classe gère la liste des noms de classes d'implémentation des DAO (Data Access Objects)
+ * associés à cette configuration. Elle permet de rechercher et d'obtenir une instance de DAO à partir
+ * d'une interface de DAO donnée.
+ *
+ * Les méthodes principales de cette classe sont :
+ * - `getDaoImpl` : Renvoie une instance de DAO pour une interface de DAO spécifiée.
+ * - `getUrl` : Renvoie l'URL d'accès à la base de données.
+ * - `getUser` : Renvoie le nom d'utilisateur pour la base de données.
+ * - `getPassword` : Renvoie le mot de passe pour la base de données.
+ * - `getType` : Renvoie le type de persistance (par exemple, "DB").
+ * - `getNbDaos` : Renvoie le nombre de classes d'implémentation des DAO spécifiées dans la configuration.
+ *
+ * Cette classe est essentielle pour la configuration et la gestion de la persistance des données de l'application.
+ * Elle permet de créer des instances de DAO en fonction des interfaces spécifiées.
+ */
+
 public class Persistance {
     public static String DB = "DB";
 

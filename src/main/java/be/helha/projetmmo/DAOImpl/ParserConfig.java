@@ -6,6 +6,25 @@ import java.nio.charset.StandardCharsets;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+/**
+ * La classe ParserConfig est responsable de la lecture et de la validation de la configuration
+ * de persistance à partir d'un fichier JSON. Elle extrait les informations de configuration
+ * et les convertit en un objet de type Persistance.
+ *
+ * Le fichier JSON de configuration doit contenir des informations telles que l'URL de la base de données,
+ * le nom d'utilisateur, le mot de passe, etc.
+ *
+ * La méthode `lireConfiguration` prend en paramètre le nom du fichier JSON de configuration, lit le fichier,
+ * le désérialise en un objet Persistance à l'aide de la bibliothèque Gson, puis valide les champs de configuration.
+ * En cas d'erreur dans le fichier de configuration, des exceptions sont levées.
+ *
+ * La méthode `validation` est utilisée pour valider les champs de configuration obligatoires.
+ *
+ * Cette classe joue un rôle essentiel dans la configuration de la persistance des données de l'application.
+ *
+ * @author El Kadaoui Soulyman
+ */
+
 public class ParserConfig {
 
     // Méthode chargée de construire un objet de type Persistance.

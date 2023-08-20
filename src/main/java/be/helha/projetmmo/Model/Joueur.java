@@ -1,5 +1,8 @@
 package be.helha.projetmmo.Model;
 
+/**
+ * Représente un joueur du jeu.
+ */
 public class Joueur {
 
     private int id;
@@ -7,8 +10,11 @@ public class Joueur {
     private String email;
     private boolean status;
 
+    /**
+     * Constructeur par défaut de la classe Joueur.
+     * Ne définit pas de valeurs pour le pseudo, l'email et le statut.
+     */
     public Joueur() {
-        // Ne pas définir de valeurs pour le pseudo, l'email, le statut et l'ID de la bourse
     }
 
     public int getId() {

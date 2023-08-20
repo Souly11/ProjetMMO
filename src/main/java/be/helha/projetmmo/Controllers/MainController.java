@@ -48,6 +48,10 @@ public class MainController implements Initializable {
     private TextField emailTF;
 
     GestionJoueurImpl gestionJoueur = new GestionJoueurImpl();
+
+    /**
+     * Initialise le contrôleur et configure la TableView avec les données des joueurs.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initialisationDesDonnes();
@@ -55,7 +59,9 @@ public class MainController implements Initializable {
         emailTF.setPromptText("Entrez votre e-mail (exemple@exemple.be)");
 
     }
-
+    /**
+     * Initialise la TableView avec les données des joueurs.
+     */
     @FXML
     private void initialisationDesDonnes() {
         // Configurez les cellules des colonnes pour afficher les données correctement
@@ -77,7 +83,9 @@ public class MainController implements Initializable {
         // Affichez les joueurs dans la TableView
         joueur.setItems(tvObservableList);
     }
-
+    /**
+     * Gère la sélection d'un joueur dans la TableView en double-cliquant dessus.
+     */
     @FXML
     private void SelectJoueur(MouseEvent mouseEvent) throws SQLException {
         if (mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2) {
@@ -111,7 +119,9 @@ public class MainController implements Initializable {
         }
     }
 
-
+    /**
+     * Ajoute un nouveau joueur en fonction des données saisies dans les champs pseudo et email.
+     */
     @FXML
     private void ajouterJoueur() {
         String pseudo = pseudoTF.getText();
@@ -192,7 +202,9 @@ public class MainController implements Initializable {
         }
     }
 
-
+    /**
+     * Supprime le joueur sélectionné de la TableView.
+     */
     @FXML
     private void supprimerJoueur() {
         Joueur joueurSelectionne = joueur.getSelectionModel().getSelectedItem();
@@ -223,7 +235,9 @@ public class MainController implements Initializable {
         }
     }
 
-    // Méthode pour rafraîchir la TableView après les modifications dans la deuxième fenêtre
+    /**
+     * Rafraîchit la TableView après des modifications effectuées dans la deuxième fenêtre.
+     */
     public void refreshTableView() {
         tvObservableList.clear();
         JoueurDAO joueurDAO = new JoueurDAOImpl();
@@ -232,7 +246,9 @@ public class MainController implements Initializable {
         joueur.setItems(tvObservableList);
     }
 
-    // Méthode pour mettre à jour le pseudo dans le premier contrôleur à partir du deuxième contrôleur
+    /**
+     * Met à jour le pseudo dans le contrôleur principal à partir du deuxième contrôleur.
+     */
     public void updatePseudoInMainController(int joueurId, String nouveauPseudo) {
         for (Joueur joueur : tvObservableList) {
             if (joueur.getId() == joueurId) {
@@ -242,7 +258,9 @@ public class MainController implements Initializable {
         }
     }
 
-    // Méthode pour mettre à jour le statut dans le premier contrôleur à partir du deuxième contrôleur
+    /**
+     * Met à jour le statut dans le contrôleur principal à partir du deuxième contrôleur.
+     */
     public void updateStatusInMainController(int joueurId, boolean newStatus) {
         for (Joueur joueur : tvObservableList) {
             if (joueur.getId() == joueurId) {

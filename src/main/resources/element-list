@@ -1,0 +1,8 @@
+module:be.helha.projetmmo
+be.helha.projetmmo
+be.helha.projetmmo.Controllers
+be.helha.projetmmo.DAO
+be.helha.projetmmo.DAOImpl
+be.helha.projetmmo.Model
+be.helha.projetmmo.UseCase
+be.helha.projetmmo.UseCaseImpl

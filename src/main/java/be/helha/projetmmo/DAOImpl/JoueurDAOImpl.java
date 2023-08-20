@@ -9,6 +9,34 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * La classe JoueurDAOImpl implémente l'interface JoueurDAO et gère l'accès aux données des joueurs
+ * dans une base de données. Elle permet de récupérer, ajouter, supprimer et mettre à jour des joueurs
+ * ainsi que de vérifier l'existence de joueurs.
+ *
+ * Les méthodes de cette classe utilisent des opérations sur la base de données pour interagir avec les données
+ * des joueurs.
+ *
+ * Pour chaque opération, la classe assure la gestion des connexions à la base de données, la conversion des données
+ * en formats appropriés et la mise à jour de la base de données.
+ *
+ * Cette classe utilise également la classe `DaoFactory` pour obtenir des connexions à la base de données et
+ * la classe `BourseDAOImpl` pour gérer les bourses associées aux joueurs.
+ *
+ * Les méthodes suivantes sont fournies pour effectuer des opérations sur les joueurs :
+ * - `getJoueurById` : Récupère un joueur par son identifiant.
+ * - `existeJoueur` : Vérifie si un joueur avec un pseudo ou une adresse e-mail donnée existe.
+ * - `ajouterJoueur` : Ajoute un nouveau joueur à la base de données.
+ * - `supprimerJoueur` : Supprime un joueur de la base de données, y compris sa bourse associée.
+ * - `getAllJoueurs` : Récupère la liste de tous les joueurs présents dans la base de données.
+ * - `updatePseudo` : Met à jour le pseudo d'un joueur.
+ * - `updateStatut` : Met à jour le statut (actif ou inactif) d'un joueur.
+ *
+ * Cette classe gère également les exceptions SQL et les fermetures de ressources de manière appropriée.
+ *
+ * @author El Kadaoui Soulyman
+ */
+
 public class JoueurDAOImpl implements JoueurDAO {
 
     public Joueur getJoueurById(int joueurId) throws SQLException {

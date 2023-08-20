@@ -1,5 +1,8 @@
 package be.helha.projetmmo.Model;
 
+/**
+ * Représente les différentes valeurs de dragmes disponibles dans le jeu.
+ */
 public enum Dragmes {
     piece_1(1),
     piece_2(2),
@@ -10,6 +13,9 @@ public enum Dragmes {
 
     private final int valeur;
 
+    /**
+     * Constructeur de l'énumération Dragmes.
+     */
     Dragmes(int valeur) {
         this.valeur = valeur;
     }
@@ -18,12 +24,11 @@ public enum Dragmes {
         return valeur;
     }
 
+    /**
+     * Renvoie une représentation sous forme de texte de l'élément de l'énumération.
+     */
     @Override
     public String toString() {
-        // Retourner le nom souhaité pour l'élément de l'enum
-        // Par exemple, retourner "Pièce 1" pour Dragmes.piece_1, etc.
-        // Vous pouvez adapter le code selon vos besoins.
-        // Pour cet exemple, nous retournons simplement le nom de l'enum avec la première lettre en majuscule.
         return this.name().substring(0, 1).toUpperCase() + this.name().substring(1).toLowerCase();
     }
 }

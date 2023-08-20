@@ -6,6 +6,7 @@ module be.helha.projetmmo {
     requires com.fasterxml.jackson.databind;
 
 
+
     opens be.helha.projetmmo to javafx.fxml;
     exports be.helha.projetmmo;
     exports be.helha.projetmmo.Controllers;
